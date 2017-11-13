@@ -1,0 +1,114 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list no-border >
+        
+            <ion-list-header>
+              شكل الصفحة الرئيسية
+            </ion-list-header>
+      
+            <ion-item>
+              <ion-toggle  [(ngModel)]="toggle01" (ionChange)="toggleTwo()"></ion-toggle>
+              <ion-label>
+                قياسي
+              </ion-label>
+              <ion-icon name='menu' item-start></ion-icon>
+             
+            </ion-item>
+
+            <ion-item>
+              <ion-toggle color="danger"  [(ngModel)]="toggle02" (ionChange)="toggleOne()"></ion-toggle>
+              <ion-label>
+               حديث
+              </ion-label>
+              <ion-icon name='logo-buffer' item-start></ion-icon>
+           
+            </ion-item>
+
+        
+      </ion-list>
+             <ion-list no-border  >
+        
+            <ion-list-header>
+              الاشعارات
+            </ion-list-header>
+     
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                A+
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+        
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                A-
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+        
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                B+
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                B-
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+   
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                O+
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+        
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                O-
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+        
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+                AB+
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+  
+            <ion-item>
+              <ion-toggle checked="false"></ion-toggle>
+              <ion-label>
+               AB-
+              </ion-label>
+              <ion-icon name='water' item-start></ion-icon>
+            </ion-item>
+  
+          </ion-list>
+</ion-content>

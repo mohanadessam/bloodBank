@@ -1,14 +1,13 @@
+
 <ion-header>
-    <ion-navbar>
-        <ion-title>
-                بنك الدم 
-        </ion-title>
-    </ion-navbar>
+  <ion-navbar color="danger">
+    <ion-title>Slides</ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    
-    <ion-grid>
+<ion-content >
+ 
+   <ion-grid *ngIf="x==0">
             
         <ion-row style="padding-top:100px;">
                
@@ -24,4 +23,45 @@
 
     </ion-grid>
 
+  <ion-slides *ngIf="x==1" loop animates #animation="animates"   (ionSlideDidChange)="animation.start({type: 'bounceIn', duration: '1000'})">
+    <ion-slide>
+      <img src="../../assets/imgs/blood/blood1.jpg" class="slide-image"/>
+      <h2 class="slide-title">محتاج دم</h2>
+      <p >اكتب ما تحتاجه هنا وسيتم عرضه للجميع</p>
+      <button  ion-button large clear icon-end color="danger" (click)="update()">
+          دخول
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../assets/imgs/blood/blood2.jpg" class="slide-image"/>
+      <h2 class="slide-title">محتاج متبرع بالدم</h2>
+      <p >ابحث هنا عن جميع المتبرعين الذين يستطيعون مساعدتك وتلبية ما تحتاج</p>
+      <button  ion-button large clear icon-end color="danger">
+          دخول
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../assets/imgs/blood/blood4.png" class="slide-image"/>
+      <h2 class="slide-title">تريد تتبرع</h2>
+      <p >يعرض هنا جميع الاشخاص الذين هم بحاجة الى تبرع دم مع بياناتهم</p>
+      <button  ion-button large clear icon-end color="danger">
+          دخول
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../assets/imgs/blood/blood6.jpg" class="slide-image"/>
+      <h2  class="slide-title fon">مستعد للتبرع في اي وقت</h2>
+      <button  ion-button large clear icon-end color="danger">
+        سجل بياناتك
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>

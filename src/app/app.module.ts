@@ -9,15 +9,16 @@ import { HomePage } from '../pages/home/home';
 import { RequiredPage } from '../pages/required/required';
 import { ShowRequiredPage } from '../pages/show-required/show-required';
 import { BloodBanksPage } from '../pages/blood-banks/blood-banks';
-
+import { TabsPage } from '../pages/tabs/tabs';
+import { SettingsPage } from '../pages/settings/settings';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { AnimationService, AnimatesDirective } from 'css-animator';
 
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { CallNumber } from '@ionic-native/call-number';
-
+import { IonicStorageModule } from '@ionic/storage';
 const config = {
     apiKey: "AIzaSyA7yorKyskuxUFKGFhpb0rqvDd2iwW39B4",
     authDomain: "bloodbank-ab5d8.firebaseapp.com",
@@ -33,14 +34,19 @@ const config = {
     HomePage,
       RequiredPage,
       ShowRequiredPage,
-      BloodBanksPage
+      BloodBanksPage,
+      SettingsPage,
+      TabsPage,
+      AnimatesDirective
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
       AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    IonicStorageModule.forRoot()
+    
     
 
   ],
@@ -50,14 +56,18 @@ const config = {
     HomePage,
        RequiredPage,
       ShowRequiredPage,
-      BloodBanksPage
+      BloodBanksPage,
+      TabsPage,
+      HomePage,
+      SettingsPage
   ],
   providers: [
       LocalNotifications,
-       CallNumber,
+   
     StatusBar,
     SplashScreen,
       AngularFireDatabase,
+      AnimationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
