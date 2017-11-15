@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-navbar color="danger">
-    <ion-title>Slides</ion-title>
+    <ion-title>الصفحة الرئيسية</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,17 +10,30 @@
    <ion-grid *ngIf="x==0">
             
         <ion-row style="padding-top:100px;">
-               
-            <ion-col col-12><button ion-button class="mybutton" color="danger" block (click)="required()">  طلب عاجل<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/32673-200.png" style="height:45px;top:1px;"/> </button></ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-12><button ion-button class="mybutton" color="primary" block (click)="showRequried()">تبرع الان <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/375080-200.png" style="height:45px;top:1px;" /></button></ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-12><button ion-button class="mybutton" color="secondary" block (click)="bloodBanks()">  مراكز التبرع <img src="https://cdn0.iconfinder.com/data/icons/man-charity-donation-volunteer/273/charity-003-512.png" style="height:40px;top:1px;"/></button></ion-col>
+            <button ion-button color="danger" outline class="btn" col-8 offset-2 (click)="required()">
+                <img  class="btn-img" src="./assets/imgs/blood3.png"/>
+            طلب عاجل                
+           </button>
         </ion-row>
 
+        <ion-row style="padding-top:10px;">
 
+              <button ion-button color="danger" outline class="btn" col-8 offset-2 (click)="showRequried()">
+                    <img  class="btn-img" src="./assets/imgs/blood-donation-2.png"/>
+                    تبرع الان               
+               </button>
+        </ion-row>
+
+        <ion-row style="padding-top:10px;">
+        
+            <button ion-button color="danger" outline class="btn" col-8 offset-2 (click)="bloodBanks()">
+                <img  class="btn-img" src="./assets/imgs/blood1.png"/>
+                مراكز التبرع               
+           </button>
+
+        </ion-row>
+  
+ 
     </ion-grid>
 
   <ion-slides *ngIf="x==1" loop animates #animation="animates"   (ionSlideDidChange)="animation.start({type: 'bounceIn', duration: '1000'})">
