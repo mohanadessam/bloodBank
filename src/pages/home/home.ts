@@ -1,3 +1,4 @@
+import { DonorsPage } from './../donors/donors';
 import { Component } from '@angular/core';
 import { RequiredPage } from '../required/required';
 import { ShowRequiredPage } from '../show-required/show-required';
@@ -40,5 +41,8 @@ export class HomePage {
     }
     bloodBanks(){
          this.navCtrl.push(BloodBanksPage);
+    }
+    Donors(){
+      this.navCtrl.push(DonorsPage);
     }
 }

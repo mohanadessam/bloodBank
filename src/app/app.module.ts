@@ -13,7 +13,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AnimationService, AnimatesDirective } from 'css-animator';
-
+import { DonorsPage } from '../pages/donors/donors'
+import { DonorsRegisterPage } from '../pages/donors-register/donors-register';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
@@ -37,7 +38,9 @@ const config = {
       BloodBanksPage,
       SettingsPage,
       TabsPage,
-      AnimatesDirective
+      AnimatesDirective,
+      DonorsPage,
+      DonorsRegisterPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,9 @@ const config = {
       BloodBanksPage,
       TabsPage,
       HomePage,
-      SettingsPage
+      SettingsPage,
+      DonorsPage,
+      DonorsRegisterPage
   ],
   providers: [
       LocalNotifications,

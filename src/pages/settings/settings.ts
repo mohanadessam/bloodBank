@@ -1,3 +1,5 @@
+import { DonorsRegisterPage } from './../donors-register/donors-register';
+
 import { Component } from '@angular/core';
 import { Events,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -49,5 +51,8 @@ export class SettingsPage {
   }
    publishEvent(v){
     this.ev.publish('v', v);
+  }
+  addDonors(){
+    this.navCtrl.push(DonorsRegisterPage)
   }
 }
