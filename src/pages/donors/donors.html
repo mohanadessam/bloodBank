@@ -6,10 +6,10 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>donors</ion-title>
+  <ion-navbar color="dark-red">
+    <ion-title>المتبرعيين</ion-title>
   </ion-navbar>
-
+ 
 </ion-header>
 
 
@@ -31,10 +31,8 @@
             <ion-card-content>
                 <p>فصيلة الدم : {{item.bloodtype}}</p>
                 <p> العنوان : {{item.location}}</p>
-                <p>  اوقات الحضور  : {{item.active}} </p>
-                <p> ملاحظات اخرى:
-                </p>
-                <!-- <blockquote>{{item.notes}}</blockquote> -->
+                <p>  ملاحظات اخرى   : {{item.note}} </p>
+               
             </ion-card-content>
     
             <ion-row>
@@ -50,4 +48,5 @@
             </ion-row>
     
         </ion-card>
+
 </ion-content>

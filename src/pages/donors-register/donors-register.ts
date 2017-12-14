@@ -23,7 +23,7 @@ export class DonorsRegisterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonorsRegisterPage');
   }
-  addDonors(name , bloodtype , phone , location , active){
+  addDonors(name , bloodtype , phone , location , note){
 
    let  d = new Date();
    let time = [d.getMonth()+1,
@@ -35,7 +35,7 @@ export class DonorsRegisterPage {
       this.register.push({
     name:name,
     bloodtype:bloodtype,
-    active:active,
+    note:note,
     phone:phone,
     location:location,
    
@@ -45,7 +45,7 @@ export class DonorsRegisterPage {
     this.navCtrl.push(DonorsPage , {
       name :name,
       bloodtype:bloodtype,
-      active:active,
+      note:note,
       phone:phone,
       location:location,
       

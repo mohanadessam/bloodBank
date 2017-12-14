@@ -9,7 +9,7 @@ import { BloodBanksPage } from '../blood-banks/blood-banks';
 import { SettingsPage } from '../settings/settings';
 import {Events, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { DonorsRegisterPage } from './../donors-register/donors-register';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -42,7 +42,10 @@ export class HomePage {
     bloodBanks(){
          this.navCtrl.push(BloodBanksPage);
     }
-    Donors(){
+    donors(){
       this.navCtrl.push(DonorsPage);
+    }
+    addDonors(){
+      this.navCtrl.push(DonorsRegisterPage)
     }
 }

@@ -1,9 +1,10 @@
-import { DonorsRegisterPage } from './../donors-register/donors-register';
+
 
 import { Component } from '@angular/core';
-import { Events,IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController,Events,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import {NotificationsPage} from '../notifications/notifications';
+import {ColorsPage} from '../colors/colors'
 /**
  * Generated class for the SettingsPage page.
  *
@@ -21,7 +22,8 @@ export class SettingsPage {
   toggle02: boolean = false;
   val: boolean ;
   x:number = 1;
-  constructor(private ev: Events,public navCtrl: NavController, public navParams: NavParams , private storage: Storage) {
+  constructor(private ev: Events,public navCtrl: NavController, 
+    public navParams: NavParams , private storage: Storage,public modalCtrl: ModalController) {
    
     this.storage.get('toggle01').then((val) => {
      this.toggle01=val;
@@ -52,7 +54,13 @@ export class SettingsPage {
    publishEvent(v){
     this.ev.publish('v', v);
   }
-  addDonors(){
-    this.navCtrl.push(DonorsRegisterPage)
+ 
+  presentModal() {
+    let modal = this.modalCtrl.create(NotificationsPage);
+    modal.present();
+  }
+  colorModal() {
+    let modal = this.modalCtrl.create(ColorsPage);
+    modal.present();
   }
 }

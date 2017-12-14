@@ -27,7 +27,7 @@ export class DonorsPage {
         key: c.payload.key,
          name:c.payload.val().name,
          bloodtype:c.payload.val().bloodtype,
-         active:c.payload.val().active,
+         note:c.payload.val().note,
          location:c.payload.val().location,
          phone:c.payload.val().phone,
           time:c.payload.val().time

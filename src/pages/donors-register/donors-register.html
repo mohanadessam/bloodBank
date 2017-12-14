@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>donorsRegister</ion-title>
+  <ion-navbar color="dark-red">
+    <ion-title>تسجيل متبرع جديد</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -47,10 +47,10 @@
                 <ion-input type="text" [(ngModel)]="location"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label floating>اوقات الحضور </ion-label>
-              <ion-input type="text" [(ngModel)]="active"></ion-input>
+              <ion-label floating>ملاحظات اخرى</ion-label>
+              <ion-input type="text" [(ngModel)]="note"></ion-input>
           </ion-item>
     
         </ion-list>
-        <button side="right" ion-button block (click)="addDonors(name , bloodtype , phone , location , active)">تسجيل </button>
+        <button side="right" color="dark-red" ion-button block (click)="addDonors(name , bloodtype , phone , location , note)">تسجيل </button>
 </ion-content>

@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="danger">
-    <ion-title>settings</ion-title>
+  <ion-navbar color="dark-red">
+    <ion-title>الاعدادات</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -17,11 +17,11 @@
     <ion-list no-border >
         
             <ion-list-header>
-              شكل الصفحة الرئيسية
+              شكل الصفحة الرئيسية والالوان
             </ion-list-header>
       
             <ion-item>
-              <ion-toggle  [(ngModel)]="toggle01" (ionChange)="toggleTwo()"></ion-toggle>
+              <ion-toggle color="dark-red" [(ngModel)]="toggle01" (ionChange)="toggleTwo()"></ion-toggle>
               <ion-label>
                 قياسي
               </ion-label>
@@ -30,86 +30,45 @@
             </ion-item>
 
             <ion-item>
-              <ion-toggle color="danger"  [(ngModel)]="toggle02" (ionChange)="toggleOne()"></ion-toggle>
+              <ion-toggle color="dark-red"  [(ngModel)]="toggle02" (ionChange)="toggleOne()"></ion-toggle>
               <ion-label>
                حديث
               </ion-label>
               <ion-icon name='logo-buffer' item-start></ion-icon>
            
             </ion-item>
-
         
       </ion-list>
-             <ion-list no-border  >
-        
+
+   <ion-list no-border  >
             <ion-list-header>
               الاشعارات
             </ion-list-header>
-     
             <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
+              <ion-toggle color="dark-red" [(ngModel)]="notitoggle" (ionChange)="presentModal()"></ion-toggle>
               <ion-label>
-                A+
+                 تلقي الاشعارات
               </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
+              <ion-icon name='notifications' item-start></ion-icon>
             </ion-item>
-        
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-                A-
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
-        
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-                B+
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
+ 
+   </ion-list>
 
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-                B-
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
-   
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-                O+
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
-        
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-                O-
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
-        
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-                AB+
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
-  
-            <ion-item>
-              <ion-toggle checked="false"></ion-toggle>
-              <ion-label>
-               AB-
-              </ion-label>
-              <ion-icon name='water' item-start></ion-icon>
-            </ion-item>
-  
-          </ion-list>
-          <button ion-button block color="danger" (click)="addDonors()">انضم الان</button>
+   <ion-list no-border  >
+    <ion-list-header>
+      عن التطبيق
+    </ion-list-header>
+  <button ion-item  (click)="presentModal()">
+    معلومات التطبيق
+    <ion-icon name='information-circle' item-start></ion-icon>
+  </button>   
+   <button ion-item  (click)="presentModal()">
+    تواصل معنا
+    <ion-icon name='mail' item-start></ion-icon>
+  </button>  
+   <button ion-item  (click)="presentModal()">
+    مطورين التطبيق
+    <ion-icon name='code-working' item-start></ion-icon>
+  </button>  
+</ion-list>
 </ion-content>
