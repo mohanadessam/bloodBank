@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 import { ModalController,Events,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {NotificationsPage} from '../notifications/notifications';
-import {ColorsPage} from '../colors/colors'
+import {AboutPage} from '../about/about';
+import {ContatcUsPage} from '../contatc-us/contatc-us';
+import {DevelopersPage} from '../developers/developers';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -59,8 +61,17 @@ export class SettingsPage {
     let modal = this.modalCtrl.create(NotificationsPage);
     modal.present();
   }
-  colorModal() {
-    let modal = this.modalCtrl.create(ColorsPage);
+  aboutModal() {
+    let modal = this.modalCtrl.create(AboutPage);
     modal.present();
   }
+  contactModal() {
+    let modal = this.modalCtrl.create(ContatcUsPage);
+    modal.present();
+  }
+  developerModal() {
+    let modal = this.modalCtrl.create(DevelopersPage);
+    modal.present();
+  }
+
 }

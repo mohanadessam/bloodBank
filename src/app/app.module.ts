@@ -16,8 +16,9 @@ import { AnimationService, AnimatesDirective } from 'css-animator';
 import { DonorsPage } from '../pages/donors/donors'
 import { DonorsRegisterPage } from '../pages/donors-register/donors-register';
 import {NotificationsPage} from '../pages/notifications/notifications'
-import {ColorsPage} from '../pages/colors/colors'
-
+import {AboutPage} from '../pages/about/about';
+import {ContatcUsPage} from '../pages/contatc-us/contatc-us';
+import {DevelopersPage} from '../pages/developers/developers';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -44,7 +45,9 @@ const config = {
       DonorsPage,
       DonorsRegisterPage,
       NotificationsPage,
-      ColorsPage
+      DevelopersPage,
+      AboutPage,
+      ContatcUsPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,9 @@ const config = {
       DonorsPage,
       DonorsRegisterPage,
       NotificationsPage,
-      ColorsPage
+      DevelopersPage,
+      AboutPage,
+      ContatcUsPage
   ],
   providers: [
       LocalNotifications,
