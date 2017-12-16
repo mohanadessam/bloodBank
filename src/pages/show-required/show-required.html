@@ -31,7 +31,7 @@
 
         <ion-card-content>
             <p>فصيلة الدم : {{item.bloodtype}}</p>
-            <p> العنوان : {{item.location}}</p>
+            <p> المستشفى : {{item.location}}</p>
             <p> عمر المريض : {{item.age}} سنة</p>
             <p> ملاحظات اخرى:
             </p>
@@ -40,11 +40,10 @@
 
         <ion-row>
             <ion-col>
-                <button ion-button block outline color="secondary" (click)="call(item.phone)">
-                <ion-icon ios="ios-call" md="md-call"style="margin:4px;"></ion-icon>
-                <div >  اتصل </div>
-                   
-              </button>
+                <button ion-button block  class="callBtn"  color="dark-green" (click)="call(item.phone)">
+                    <div style="margin:8px">  اتصل </div>
+                    <ion-icon name="call" ></ion-icon>
+                </button>
             </ion-col>
 
 

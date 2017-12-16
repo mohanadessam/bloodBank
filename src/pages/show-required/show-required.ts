@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
-
+import { CallNumber } from '@ionic-native/call-number';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-// import { CallNumber } from '@ionic-native/call-number';
 
 
 /**
@@ -23,7 +22,8 @@ export class ShowRequiredPage {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , db:AngularFireDatabase ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , db:AngularFireDatabase
+  ,private callNumber: CallNumber ) {
 
       this.itemsRef = db.list('/required', ref => ref.orderByChild('decs'))
       
@@ -45,11 +45,11 @@ export class ShowRequiredPage {
   delete(){
     alert("delete")
   }
-// call(phone){
-//   this.callNumber.callNumber(phone , true)
-//   .then(() => console.log('Launched dialer!'))
-//   .catch(() => console.log('Error launching dialer'));
-// }
+call(phone){
+  this.callNumber.callNumber(phone , true)
+  .then(() => console.log('Launched dialer!'))
+  .catch(() => console.log('Error launching dialer'));
+}
   
 
 }

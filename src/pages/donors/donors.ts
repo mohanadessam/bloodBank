@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -19,7 +20,8 @@ import 'rxjs/add/operator/map';
 export class DonorsPage {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
-  constructor(public navCtrl: NavController, public navParams: NavParams , private db:AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private db:AngularFireDatabase
+    ,private callNumber: CallNumber) {
     this.itemsRef = db.list('/Donors', ref => ref.orderByChild('decs'))
     
     this.items = this.itemsRef.snapshotChanges().map(changes => {
@@ -40,5 +42,9 @@ export class DonorsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonorsPage');
   }
-
+  call(phone){
+    this.callNumber.callNumber(phone , true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer'));
+  }
 }

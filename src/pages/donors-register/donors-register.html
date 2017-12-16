@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="dark-red">
-    <ion-title>تسجيل متبرع جديد</ion-title>
+    <ion-title>متبرع جديد</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-  <ion-list>
+  <ion-list class="rightSide">
     
             <ion-item>
                 <ion-label floating>اسم المتبرع</ion-label>
@@ -40,7 +40,7 @@
             </ion-item>
             <ion-item>
                 <ion-label floating>رقم الهاتف </ion-label>
-                <ion-input type="text" [(ngModel)]="phone"></ion-input>
+                <ion-input type="tel" [(ngModel)]="phone"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>العنوان </ion-label>
