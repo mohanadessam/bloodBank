@@ -1,0 +1,60 @@
+<!--
+  Generated template for the RegistrationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark-red">
+      <ion-title>التسجيل</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="Gradient">
+
+  <ion-list>
+
+    <ion-item class="noBackColor">
+      <ion-label > <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
+      <ion-input type="text" ></ion-input>
+    </ion-item>
+    <ion-item class="noBackColor">
+      <ion-label > <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item class="noBackColor">
+        <ion-label floating>المحافظة</ion-label>
+        <ion-select [(ngModel)]="gov" cancelText="الغاء" okText="اختار ">
+            <ion-option value="bgd">بغداد</ion-option>
+            <ion-option value="bsr">البصره</ion-option>
+            <ion-option value="mus">الموصل</ion-option>
+
+
+        </ion-select>
+    </ion-item>
+  
+
+
+  </ion-list>
+  
+  <div padding>
+    <button ion-button block color="light" class="loginBnt">دخول</button>
+    <ion-row></ion-row>
+
+  <button ion-button block class="callBtn" color="primary" (click)="facebookLogin()">
+      <div style="margin:8px">التسجيل بواسطة الفيسبوك</div>
+         <ion-icon name="logo-facebook" ></ion-icon>
+    </button>
+    <ion-row></ion-row>
+
+  <button ion-button block outline class="callBtn" color="light" (click)="googleLogin()">
+      <div style="margin:8px">التسجيل بواسطة كوكل بلاس</div>
+         <ion-icon name="logo-googleplus" ></ion-icon>
+    </button>  
+    
+  </div>
+</ion-content>

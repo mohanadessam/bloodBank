@@ -1,0 +1,25 @@
+page-login {
+
+}
+
+.Gradient{
+      background: #d04e4e;
+    background: -moz-linear-gradient(top, #d04e4e 0%, #873333 100%);
+    background: -webkit-linear-gradient(top, #d04e4e 0%,#873333 100%);
+    background: linear-gradient(to bottom, #d04e4e 0%,#873333 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d04e4e', endColorstr='#873333',GradientType=0 );
+direction: rtl
+}
+.noBackColor{
+    background-color: #fff0; 
+    color: white;
+    direction: rtl
+}
+.text-input{
+    direction: rtl
+}
+.loginBnt{
+    color: #873435;
+    background-color: #ffffff;
+    font-size: 2rem;
+}

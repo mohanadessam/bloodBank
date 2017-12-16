@@ -23,6 +23,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { IonicStorageModule } from '@ionic/storage';
+import {RegistrationPage} from '../pages/registration/registration';
+import {LoginPage} from '../pages/login/login';
+
 const config = {
   apiKey: "AIzaSyDpm6RSasGMMukDKHOj_-PieESRRxcD22w",
   authDomain: "bloodbank-iq.firebaseapp.com",
@@ -47,7 +50,9 @@ const config = {
       NotificationsPage,
       DevelopersPage,
       AboutPage,
-      ContatcUsPage
+      ContatcUsPage,
+      RegistrationPage,
+      LoginPage
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,9 @@ const config = {
       NotificationsPage,
       DevelopersPage,
       AboutPage,
-      ContatcUsPage
+      ContatcUsPage,
+      RegistrationPage,
+      LoginPage
   ],
   providers: [
       LocalNotifications,
