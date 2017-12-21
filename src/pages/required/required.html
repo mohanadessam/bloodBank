@@ -15,7 +15,9 @@
 
 <ion-content padding>
     <ion-list class="rightSide">
-
+        <!-- <div *ngFor="let item of state_table | async">
+            <p>{{item.state}}</p>
+        </div> -->
         <ion-item>
             <ion-label floating>اسم المريض</ion-label>
             <ion-input type="text" [(ngModel)]="name"></ion-input>

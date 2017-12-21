@@ -1,9 +1,12 @@
+import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase , AngularFireList} from 'angularfire2/database';
 import { ShowRequiredPage } from '../show-required/show-required';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import 'rxjs/add/operator/map';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Observable } from 'rxjs/Observable';
 // import { BloodBanksPage } from '../blood-banks/blood-banks';
 
 /**
@@ -20,17 +23,22 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class RequiredPage {
  required :AngularFireList<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
-      this.required = db.list('/required');
-      this.localNotifications.on("click" ,(notification ,state) =>{
-        
+  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
+    fire.auth.onAuthStateChanged(function(user){
+   if(!user){
+     navCtrl.push(LoginPage);
+   }
+   console.log(user);
+    });
+    this.required = db.list('/required'); 
+    this.localNotifications.on("click" ,(notification ,state) =>{
+      
         this.navCtrl.push(ShowRequiredPage 
         )
       })
   }
 
   addRequired( name , bloodtype ,age , phone , location , notes){
-   
    let  d = new Date();
    let time = [d.getMonth()+1,
                d.getDate(),
@@ -61,6 +69,7 @@ export class RequiredPage {
     console.log(error);
   }
 )
+
    this.localNotifications.schedule({
   id: 1,
     title:'مطلوب فصيلة ' +bloodtype ,

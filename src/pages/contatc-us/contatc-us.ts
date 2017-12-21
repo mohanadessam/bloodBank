@@ -3,12 +3,9 @@ import { IonicPage, NavController, NavParams  ,ViewController} from 'ionic-angul
 import { AngularFireDatabase , AngularFireList} from 'angularfire2/database';
 import{HomePage} from '../home/home'
 import { AlertController } from 'ionic-angular';
-/**
- * Generated class for the ContatcUsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from './../login/login';
+
 
 @IonicPage()
 @Component({
@@ -18,9 +15,15 @@ import { AlertController } from 'ionic-angular';
 export class ContatcUsPage {
   newFeedback :AngularFireList<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams 
+  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams 
     , public viewCtrl: ViewController, public db:AngularFireDatabase,
     public alertCtrl: AlertController) {
+     this.fire.auth.onAuthStateChanged(function(user){
+        if(!user){
+          navCtrl.push(LoginPage);
+        }
+        console.log(user);
+         });
     this.newFeedback = db.list('/Feedback');
 
   }

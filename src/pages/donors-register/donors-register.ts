@@ -1,13 +1,10 @@
+import { LoginPage } from '../login/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase , AngularFireList} from 'angularfire2/database';
 import { DonorsPage } from '../donors/donors'
-/**
- * Generated class for the DonorsRegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @IonicPage()
 @Component({
@@ -16,7 +13,13 @@ import { DonorsPage } from '../donors/donors'
 })
 export class DonorsRegisterPage {
   register :AngularFireList<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase ) {
+  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase ) {
+    this.fire.auth.onAuthStateChanged(function(user){
+      if(!user){
+        navCtrl.push(LoginPage);
+      }
+      console.log(user);
+       });
     this.register = db.list('/Donors');
   }
 

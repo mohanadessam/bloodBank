@@ -1,3 +1,4 @@
+import { StatePage } from './../pages/state/state';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -25,6 +26,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { IonicStorageModule } from '@ionic/storage';
 import {RegistrationPage} from '../pages/registration/registration';
 import {LoginPage} from '../pages/login/login';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
 
 const config = {
   apiKey: "AIzaSyDpm6RSasGMMukDKHOj_-PieESRRxcD22w",
@@ -52,20 +56,23 @@ const config = {
       AboutPage,
       ContatcUsPage,
       RegistrationPage,
-      LoginPage
+      LoginPage,
+      StatePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(
       MyApp, {
         backButtonText: 'رجوع'
-      }
+      },
+      
     
     ),
       AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    
     
     
 
@@ -87,7 +94,8 @@ const config = {
       AboutPage,
       ContatcUsPage,
       RegistrationPage,
-      LoginPage
+      LoginPage,
+      StatePage
   ],
   providers: [
       LocalNotifications,
@@ -96,6 +104,7 @@ const config = {
     SplashScreen,
       AngularFireDatabase,
       AnimationService,
+      AngularFireAuth,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

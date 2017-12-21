@@ -1,4 +1,7 @@
+import { HomePage } from './../home/home';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ToastController } from 'ionic-angular';
 
 import { Component } from '@angular/core';
 import { ModalController,Events,IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -24,7 +27,7 @@ export class SettingsPage {
   toggle02: boolean = false;
   val: boolean ;
   x:number = 1;
-  constructor(private ev: Events,public navCtrl: NavController, 
+  constructor(private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
     public navParams: NavParams , private storage: Storage,public modalCtrl: ModalController) {
    
     this.storage.get('toggle01').then((val) => {
@@ -73,5 +76,23 @@ export class SettingsPage {
     let modal = this.modalCtrl.create(DevelopersPage);
     modal.present();
   }
-
+  logout(){
+    let toast = this.toastCtrl.create({
+      message: 'تم تسجيل الخروج من الحساب ',
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    
+  
+    this.fire.auth.signOut().then(function() {
+      toast.present();
+    }, function(error) {
+      console.log(error);
+    });
+  }
 }

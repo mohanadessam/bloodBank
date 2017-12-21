@@ -19,30 +19,30 @@
 
     <ion-item class="noBackColor">
       <ion-label > <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text" [(ngModel)]="email" ></ion-input>
     </ion-item>
     <ion-item class="noBackColor">
       <ion-label > <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
-    <ion-item class="noBackColor">
+    <!-- <ion-item class="noBackColor">
         <ion-label floating>المحافظة</ion-label>
-        <ion-select [(ngModel)]="gov" cancelText="الغاء" okText="اختار ">
-            <ion-option value="bgd">بغداد</ion-option>
-            <ion-option value="bsr">البصره</ion-option>
-            <ion-option value="mus">الموصل</ion-option>
+        <ion-select [(ngModel)]="state" cancelText="الغاء" okText="اختار ">
+            <ion-option value="1">بغداد</ion-option>
+            <ion-option value="2">البصره</ion-option>
+            <ion-option value="3">الموصل</ion-option>
 
 
         </ion-select>
     </ion-item>
-  
+   -->
 
 
   </ion-list>
   
   <div padding>
-    <button ion-button block color="light" class="loginBnt">دخول</button>
+    <button ion-button block color="light" class="loginBnt" (click)="Rgister()">تسجيل</button>
     <ion-row></ion-row>
 
   <button ion-button block class="callBtn" color="primary" (click)="facebookLogin()">

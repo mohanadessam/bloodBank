@@ -20,18 +20,18 @@
   
       <ion-item class="noBackColor">
         <ion-label > <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
-        <ion-input type="text" ></ion-input>
+        <ion-input type="text"[(ngModel)]="email" ></ion-input>
       </ion-item>
     
       <ion-item class="noBackColor">
         <ion-label > <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
   
     </ion-list>
     
     <div padding>
-      <button ion-button block color="light" class="loginBnt">دخول</button>
+      <button ion-button block color="light" class="loginBnt" (click)="Login()">دخول</button>
       <button ion-button color="light" clear (click)="skip()">تخطي</button>
       <button ion-button block class="callBtn" color="primary" (click)="facebookLogin()">
           <div style="margin:8px">الدخول بواسطة الفيسبوك</div>

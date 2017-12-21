@@ -3,11 +3,7 @@ import { Component } from '@angular/core';
 import { RequiredPage } from '../required/required';
 import { ShowRequiredPage } from '../show-required/show-required';
 import { BloodBanksPage } from '../blood-banks/blood-banks';
-//import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
-//import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/map';
-import { SettingsPage } from '../settings/settings';
-import {Events, IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Events, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { DonorsRegisterPage } from './../donors-register/donors-register';
 @Component({
@@ -16,6 +12,7 @@ import { DonorsRegisterPage } from './../donors-register/donors-register';
 })
 export class HomePage {
   x:number = 2;
+
   constructor(private ev: Events,public navCtrl: NavController, public navParams: NavParams , private storage: Storage) {
     this.ev.subscribe('v', v => {
       if(v){
