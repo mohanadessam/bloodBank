@@ -1,4 +1,4 @@
-import { RequiredPage } from './../../../../bloodBank2blank/src/pages/required/required';
+import { RequiredPage } from '../required/required';
 import { HomePage } from './../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
