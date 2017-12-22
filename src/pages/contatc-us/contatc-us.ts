@@ -20,7 +20,7 @@ export class ContatcUsPage {
     public alertCtrl: AlertController) {
      this.fire.auth.onAuthStateChanged(function(user){
         if(!user){
-          navCtrl.push(LoginPage);
+          navCtrl.setRoot(LoginPage);
         }
         console.log(user);
          });

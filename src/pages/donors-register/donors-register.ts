@@ -16,7 +16,7 @@ export class DonorsRegisterPage {
   constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase ) {
     this.fire.auth.onAuthStateChanged(function(user){
       if(!user){
-        navCtrl.push(LoginPage);
+        navCtrl.setRoot(LoginPage);
       }
       console.log(user);
        });

@@ -6,7 +6,10 @@
 </ion-header>
 
 <ion-content >
- 
+  <div *ngFor="let item of state  | async " >
+    <p>{{item.key}}</p>
+    <p>{{item.state}}</p>
+  </div>
    <ion-grid *ngIf="x==0">
             
         <ion-row style="padding-top:10px;">
@@ -90,4 +93,5 @@
     </ion-slide>
 
   </ion-slides>
+  
 </ion-content>

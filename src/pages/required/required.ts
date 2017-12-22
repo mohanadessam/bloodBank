@@ -26,7 +26,7 @@ export class RequiredPage {
   constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
     fire.auth.onAuthStateChanged(function(user){
    if(!user){
-     navCtrl.push(LoginPage);
+     navCtrl.setRoot(LoginPage);
    }
    console.log(user);
     });

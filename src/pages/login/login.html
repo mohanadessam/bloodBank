@@ -15,9 +15,10 @@
   
   <ion-content padding class="Gradient">
       <img src="./assets/imgs/blood/blood3.jpg" width="100%" height="320px"/>
-  
     <ion-list>
-  
+      <div >
+       
+      </div>
       <ion-item class="noBackColor">
         <ion-label > <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
         <ion-input type="text"[(ngModel)]="email" ></ion-input>
@@ -30,7 +31,7 @@
   
     </ion-list>
     
-    <div padding>
+    <div  padding>
       <button ion-button block color="light" class="loginBnt" (click)="Login()">دخول</button>
       <button ion-button color="light" clear (click)="skip()">تخطي</button>
       <button ion-button block class="callBtn" color="primary" (click)="facebookLogin()">
@@ -43,5 +44,6 @@
         </button>
       <button ion-button block color="light" clear (click)="register()">انشاء حساب جديد</button>
     </div>
+    
   </ion-content>
   
