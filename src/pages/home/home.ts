@@ -6,14 +6,19 @@ import { BloodBanksPage } from '../blood-banks/blood-banks';
 import {Events, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { DonorsRegisterPage } from './../donors-register/donors-register';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
   x:number = 2;
-
-  constructor(private ev: Events,public navCtrl: NavController, public navParams: NavParams , private storage: Storage) {
+  userData:AngularFireList<any>;
+  state:Observable<any[]>;
+  constructor(public db:AngularFireDatabase,private ev: Events,public navCtrl: NavController, public navParams: NavParams , private storage: Storage) {
     this.ev.subscribe('v', v => {
       if(v){
         this.x=0;
@@ -29,6 +34,17 @@ export class HomePage {
      }else{this.x=1;}
      console.log('Your x home is', this.x);
     });
+    this.userData = this.db.list('/users')
+    
+    this.state = this.userData.snapshotChanges().map(changes => {
+      return changes.map(c => ({ 
+        key: c.payload.key,
+         state:c.payload.val().state,
+         })
+      );
+    });
+    
+
   }
     required(){
     this.navCtrl.push(RequiredPage);
