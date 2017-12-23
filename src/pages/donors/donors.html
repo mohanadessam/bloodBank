@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-card *ngFor="let item of items | async  ">
-    
+    <ion-grid *ngIf="item.state == state" >
             <ion-item  >
                 <ion-avatar item-start>
                     <img src="http://www.ativo.co.za/wp-content/uploads/2017/06/005-profile.png">
@@ -45,7 +45,7 @@
     
     
             </ion-row>
-    
+        </ion-grid>
         </ion-card>
 
 </ion-content>

@@ -14,8 +14,8 @@ import { LoginPage } from './../login/login';
 })
 export class ContatcUsPage {
   newFeedback :AngularFireList<any>;
-
-  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams 
+  signOut:boolean
+    constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams 
     , public viewCtrl: ViewController, public db:AngularFireDatabase,
     public alertCtrl: AlertController) {
      this.fire.auth.onAuthStateChanged(function(user){

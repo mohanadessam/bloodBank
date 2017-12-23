@@ -70,9 +70,11 @@
     مطورين التطبيق
     <ion-icon name='code-working' item-start></ion-icon>
   </button>
-  <button ion-item  (click)="logout()">
+  <ion-row *ngIf="signOut"  >
+  <button  ion-item  (click)="logout()">
    تسجيل خروج 
     <ion-icon ios="ios-log-out" md="md-log-out" item-start></ion-icon>
-  </button>  
+  </button> 
+</ion-row>
 </ion-list>
 </ion-content>

@@ -43,6 +43,32 @@
                 <ion-input type="tel" [(ngModel)]="phone"></ion-input>
             </ion-item>
             <ion-item>
+                <ion-label floating>المحافظة </ion-label>
+    
+                <ion-select [(ngModel)]="state" cancelText="الغاء" okText="اختار ">
+                    <ion-option value="1">بغداد</ion-option>
+                    <ion-option value="2">البصرة</ion-option>
+                    <ion-option value="3">نينوى</ion-option>
+                    <ion-option value="4">لأنبار</ion-option>
+                    <ion-option value="5">أربيل </ion-option>
+                    <ion-option value="6">بابل</ion-option>
+                    <ion-option value="7">دهوك</ion-option>
+                    <ion-option value="8">القادسية</ion-option>
+                    <ion-option value="9">ديالى</ion-option>
+                    <ion-option value="10">ذي قار</ion-option>
+                    <ion-option value="11">السليمانية</ion-option>
+                    <ion-option value="12">صلاح الدين</ion-option>
+                    <ion-option value="13">كركوك</ion-option>
+                    <ion-option value="14">كربلاء</ion-option>
+                    <ion-option value="15">المثنى</ion-option>
+                    <ion-option value="16">ميسان</ion-option>
+                    <ion-option value="17">	النجف</ion-option>
+                    <ion-option value="18">واسط</ion-option>
+
+                </ion-select>
+    
+            </ion-item>
+            <ion-item>
                 <ion-label floating>العنوان </ion-label>
                 <ion-input type="text" [(ngModel)]="location"></ion-input>
             </ion-item>
@@ -52,5 +78,5 @@
           </ion-item>
     
         </ion-list>
-        <button side="right" color="dark-red" ion-button block (click)="addDonors(name , bloodtype , phone , location , note)">تسجيل </button>
+        <button side="right" color="dark-red" ion-button block (click)="addDonors(name , bloodtype , phone , location , note ,state)">تسجيل </button>
 </ion-content>

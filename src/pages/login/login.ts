@@ -26,8 +26,7 @@ export class LoginPage {
   alert;
   userData:AngularFireList<any>;
   state:Observable<any[]>;
-  mystate
-  mykey
+  signIN=0;
   constructor(private toastCtrl: ToastController,public db:AngularFireDatabase,public alertCtrl: AlertController,public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
     fire.auth.onAuthStateChanged(function(user){
       if(user){
@@ -56,13 +55,9 @@ export class LoginPage {
   
     this.fire.auth.signInWithEmailAndPassword(this.email,this.password).then(user =>{
       toast.present();
-      if(this.mystate !=''){
+      
         this.navCtrl.setRoot(HomePage);
-      }else{
-        this.navCtrl.setRoot(StatePage);
-      }
-        // this.navCtrl.setRoot(HomePage);
-   
+     
     }).catch(error=>{
       this.showAlert();
     })
@@ -93,25 +88,7 @@ export class LoginPage {
       console.log('Dismissed toast');
     }); 
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(user =>{
-      this.userData = this.db.list('/users')
-      
-      this.state = this.userData.snapshotChanges().map(changes => {
-        return changes.map(c => ( 
-         this.mykey = c.payload.key
-           )
-        );
-      }); 
-      
-        alert(this.mykey)
-      
-      toast.present();
-      console.log(user);
-      if(this.mystate !=''){
-        this.navCtrl.setRoot(HomePage);
-      }else{
-        this.navCtrl.setRoot(StatePage);
-      }
-      // this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(HomePage);
     });
     
 }
@@ -129,14 +106,7 @@ export class LoginPage {
     });
     this.fire.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(user =>{
       toast.present();
-      if(this.mystate !=''){
-        this.navCtrl.setRoot(HomePage);
-        alert(this.mystate);
-      }else{
-        this.navCtrl.setRoot(StatePage);
-        alert("no no "+this.mystate);
-      }
-      // this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(HomePage);
     });
   }
 }

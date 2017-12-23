@@ -1,3 +1,5 @@
+import { DonorsStatePage } from './../donors-state/donors-state';
+import { StatePage } from './../state/state';
 import { DonorsPage } from './../donors/donors';
 import { Component } from '@angular/core';
 import { RequiredPage } from '../required/required';
@@ -17,7 +19,7 @@ import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
 export class HomePage {
   x:number = 2;
   userData:AngularFireList<any>;
-  state:Observable<any[]>;
+  state;
   constructor(public db:AngularFireDatabase,private ev: Events,public navCtrl: NavController, public navParams: NavParams , private storage: Storage) {
     this.ev.subscribe('v', v => {
       if(v){
@@ -34,15 +36,6 @@ export class HomePage {
      }else{this.x=1;}
      console.log('Your x home is', this.x);
     });
-    this.userData = this.db.list('/users')
-    
-    this.state = this.userData.snapshotChanges().map(changes => {
-      return changes.map(c => ({ 
-        key: c.payload.key,
-         state:c.payload.val().state,
-         })
-      );
-    });
     
 
   }
@@ -50,13 +43,13 @@ export class HomePage {
     this.navCtrl.push(RequiredPage);
     }
     showRequried(){
-        this.navCtrl.push(ShowRequiredPage);
+        this.navCtrl.push(StatePage);
     }
     bloodBanks(){
          this.navCtrl.push(BloodBanksPage);
     }
     donors(){
-      this.navCtrl.push(DonorsPage);
+      this.navCtrl.push(DonorsStatePage);
     }
     addDonors(){
       this.navCtrl.push(DonorsRegisterPage)

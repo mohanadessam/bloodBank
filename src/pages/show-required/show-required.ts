@@ -21,10 +21,11 @@ import 'rxjs/add/operator/map';
 export class ShowRequiredPage {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
-
+  state
   constructor(public navCtrl: NavController, public navParams: NavParams , db:AngularFireDatabase
   ,private callNumber: CallNumber ) {
-
+    this.state=this.navParams.get("id");
+    alert(this.state);
       this.itemsRef = db.list('/required', ref => ref.orderByChild('decs'))
       
       this.items = this.itemsRef.snapshotChanges().map(changes => {
@@ -36,7 +37,8 @@ export class ShowRequiredPage {
            notes:c.payload.val().notes,
            location:c.payload.val().location,
            phone:c.payload.val().phone,
-            time:c.payload.val().time
+            time:c.payload.val().time,
+            state:c.payload.val().state
            })
         );
       });

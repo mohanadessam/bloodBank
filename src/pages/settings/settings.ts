@@ -2,7 +2,7 @@ import { HomePage } from './../home/home';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ToastController } from 'ionic-angular';
-
+import 'rxjs/add/operator/take';
 import { Component } from '@angular/core';
 import { ModalController,Events,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -10,6 +10,7 @@ import {NotificationsPage} from '../notifications/notifications';
 import {AboutPage} from '../about/about';
 import {ContatcUsPage} from '../contatc-us/contatc-us';
 import {DevelopersPage} from '../developers/developers';
+import { AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -27,9 +28,22 @@ export class SettingsPage {
   toggle02: boolean = false;
   val: boolean ;
   x:number = 1;
-  constructor(private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
+  signOut=false;
+  constructor(public af:AngularFireDatabase,private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
     public navParams: NavParams , private storage: Storage,public modalCtrl: ModalController) {
-   
+  
+       if(this.fire.auth.onAuthStateChanged(function(user){
+        if(user){
+          // this.signOut = true;   
+        }
+        })){
+        }
+        this.fire.authState.take(1).subscribe(auth =>{
+          this.af.list('/users')
+            
+         })
+       
+
     this.storage.get('toggle01').then((val) => {
      this.toggle01=val;
      if(val){
