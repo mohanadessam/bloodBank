@@ -12,7 +12,7 @@ import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { PipeTransform } from '@angular/core/src/change_detection/pipe_transform';
-import { async } from 'q';
+// import { async } from 'q';
 
 @IonicPage()
 @Component({

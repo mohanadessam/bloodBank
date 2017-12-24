@@ -6,14 +6,14 @@
 </ion-header>
 
 <ion-content >
-  <div *ngFor="let item of state  | async " >
+  <!-- <div *ngFor="let item of state  | async " >
     <p>{{item.key}}</p>
     <p>{{item.state}}</p>
-  </div>
+  </div> -->
    <ion-grid *ngIf="x==0">
             
         <ion-row style="padding-top:10px;">
-            <button ion-button color="danger" outline class="btn" col-8 offset-2 (click)="required()">
+            <button ion-button color="danger" outline class="btn" col-8 offset-2 (click)="request()">
                 <img  class="btn-img" src="./assets/imgs/blood3.png"/>
             طلب عاجل                
            </button>
@@ -57,7 +57,7 @@
       <img src="./assets/imgs/blood/blood1.jpg" class="slide-image"/>
       <h2 class="slide-title">محتاج دم</h2>
       <p >اكتب ما تحتاجه هنا وسيتم عرضه للجميع</p>
-      <button  ion-button large clear icon-end color="danger" (click)="required()">
+      <button  ion-button large clear icon-end color="danger" (click)="request()">
           دخول
         <ion-icon name="arrow-forward"></ion-icon>
       </button>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "732771519936",
+    "firebase_url": "https://bloodbank-iq.firebaseio.com",
+    "project_id": "bloodbank-iq",
+    "storage_bucket": "bloodbank-iq.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732771519936:android:df96ac2ee23a49ca",
+        "android_client_info": {
+          "package_name": "com.cfori.bbiq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732771519936-3opjjgb0n3tb7qb58j16mci3paq611dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7_JRe32WbMt_Mn3_CnEYZ6osDb8dSTv8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

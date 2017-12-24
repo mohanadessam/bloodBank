@@ -18,11 +18,11 @@
   <ion-list>
 
     <ion-item class="noBackColor">
-      <ion-label > <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
+      <ion-label floating > <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
       <ion-input type="text" [(ngModel)]="email" ></ion-input>
     </ion-item>
     <ion-item class="noBackColor">
-      <ion-label > <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
+      <ion-label floating> <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
@@ -45,16 +45,6 @@
     <button ion-button block color="light" class="loginBnt" (click)="Rgister()">تسجيل</button>
     <ion-row></ion-row>
 
-  <button ion-button block class="callBtn" color="primary" (click)="facebookLogin()">
-      <div style="margin:8px">التسجيل بواسطة الفيسبوك</div>
-         <ion-icon name="logo-facebook" ></ion-icon>
-    </button>
-    <ion-row></ion-row>
-
-  <button ion-button block outline class="callBtn" color="light" (click)="googleLogin()">
-      <div style="margin:8px">التسجيل بواسطة كوكل بلاس</div>
-         <ion-icon name="logo-googleplus" ></ion-icon>
-    </button>  
     
   </div>
 </ion-content>

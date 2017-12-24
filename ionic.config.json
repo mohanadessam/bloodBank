@@ -1,6 +1,6 @@
 {
   "name": "bloodBank",
-  "app_id": "",
+  "app_id": "12434264",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

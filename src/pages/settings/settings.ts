@@ -2,6 +2,7 @@ import { HomePage } from './../home/home';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ToastController } from 'ionic-angular';
+import { LoginPage } from './../login/login';
 
 import { Component } from '@angular/core';
 import { ModalController,Events,IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -30,6 +31,8 @@ export class SettingsPage {
   constructor(private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
     public navParams: NavParams , private storage: Storage,public modalCtrl: ModalController) {
    
+
+
     this.storage.get('toggle01').then((val) => {
      this.toggle01=val;
      if(val){
@@ -39,7 +42,12 @@ export class SettingsPage {
     });
   }
 
-
+login(){
+  this.navCtrl.setRoot(LoginPage);
+}
+ionViewDidLoad() {
+   
+}
   toggleOne() {
     this.toggle01 = !this.toggle02;
     this.storage.set('toggle01', this.toggle01);

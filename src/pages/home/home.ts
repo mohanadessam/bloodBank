@@ -46,7 +46,7 @@ export class HomePage {
     
 
   }
-    required(){
+  request(){
     this.navCtrl.push(RequiredPage);
     }
     showRequried(){

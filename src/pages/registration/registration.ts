@@ -27,7 +27,9 @@ export class RegistrationPage {
     console.log('ionViewDidLoad RegistrationPage');
   }
   Rgister(){
+    
     this.fire.auth.createUserWithEmailAndPassword(this.email,this.password).then(user=>{
+     
       this.navCtrl.setRoot(StatePage);
     }).catch(function(error){
       console.log(error);
