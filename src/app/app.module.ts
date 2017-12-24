@@ -1,3 +1,4 @@
+import { DonorsStatePage } from './../pages/donors-state/donors-state';
 import { StatePage } from './../pages/state/state';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -57,7 +58,8 @@ const config = {
       ContatcUsPage,
       RegistrationPage,
       LoginPage,
-      StatePage
+      StatePage,
+      DonorsStatePage
   ],
   imports: [
     BrowserModule,
@@ -95,7 +97,8 @@ const config = {
       ContatcUsPage,
       RegistrationPage,
       LoginPage,
-      StatePage
+      StatePage,
+      DonorsStatePage
   ],
   providers: [
       LocalNotifications,

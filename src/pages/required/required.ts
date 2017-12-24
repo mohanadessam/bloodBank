@@ -23,6 +23,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class RequiredPage {
  required :AngularFireList<any>;
+ 
   constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
     fire.auth.onAuthStateChanged(function(user){
    if(!user){
@@ -38,7 +39,7 @@ export class RequiredPage {
       })
   }
 
-  addRequired( name , bloodtype ,age , phone , location , notes){
+  addRequired( name , bloodtype ,age , phone , location , state , notes){
    let  d = new Date();
    let time = [d.getMonth()+1,
                d.getDate(),
@@ -47,14 +48,15 @@ export class RequiredPage {
                d.getMinutes(),
                d.getSeconds()].join(':');
       this.required.push({
-    name:name,
-    bloodtype:bloodtype,
-    age:age,
-    phone:phone,
-    location:location,
-    notes:notes,
-    decs:0- Date.now(),
-    time:time
+    "name":name,
+    "bloodtype":bloodtype,
+    "age":age,
+    "phone":phone,
+    "location":location,
+    "notes":notes,
+    "decs":0- Date.now(),
+    "time":time,
+    "state":state
   }).then(newPerson =>{
     this.navCtrl.push(ShowRequiredPage , {
       name :name,
@@ -63,7 +65,8 @@ export class RequiredPage {
       phone:phone,
       location:location,
       notes:notes,
-      time:time
+      time:time,
+      "id":state
     })
   },error => {
     console.log(error);

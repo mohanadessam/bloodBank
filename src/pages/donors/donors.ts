@@ -20,8 +20,10 @@ import 'rxjs/add/operator/map';
 export class DonorsPage {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
+  state;
   constructor(public navCtrl: NavController, public navParams: NavParams , private db:AngularFireDatabase
     ,private callNumber: CallNumber) {
+      this.state=this.navParams.get("id");
     this.itemsRef = db.list('/Donors', ref => ref.orderByChild('decs'))
     
     this.items = this.itemsRef.snapshotChanges().map(changes => {
@@ -32,7 +34,8 @@ export class DonorsPage {
          note:c.payload.val().note,
          location:c.payload.val().location,
          phone:c.payload.val().phone,
-          time:c.payload.val().time
+          time:c.payload.val().time,
+          state:c.payload.val().state,
          })
       );
     });

@@ -11,6 +11,7 @@ import {NotificationsPage} from '../notifications/notifications';
 import {AboutPage} from '../about/about';
 import {ContatcUsPage} from '../contatc-us/contatc-us';
 import {DevelopersPage} from '../developers/developers';
+import { AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -28,7 +29,8 @@ export class SettingsPage {
   toggle02: boolean = false;
   val: boolean ;
   x:number = 1;
-  constructor(private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
+  signOut=false;
+  constructor(public af:AngularFireDatabase,private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
     public navParams: NavParams , private storage: Storage,public modalCtrl: ModalController) {
    
 
