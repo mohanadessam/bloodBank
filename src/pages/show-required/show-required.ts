@@ -4,7 +4,9 @@ import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
 import { CallNumber } from '@ionic-native/call-number';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { AlertController } from 'ionic-angular';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the ShowRequiredPage page.
@@ -21,11 +23,14 @@ import 'rxjs/add/operator/map';
 export class ShowRequiredPage {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
-  state
-  constructor(public navCtrl: NavController, public navParams: NavParams , db:AngularFireDatabase
-  ,private callNumber: CallNumber ) {
+  userData :AngularFireList<any>;
+
+  state;
+  userid="";
+
+  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams ,public db:AngularFireDatabase
+  ,private callNumber: CallNumber ,public alertCtrl: AlertController) {
     this.state=this.navParams.get("id");
-    alert(this.state);
       this.itemsRef = db.list('/required', ref => ref.orderByChild('decs'))
       
       this.items = this.itemsRef.snapshotChanges().map(changes => {
@@ -38,15 +43,52 @@ export class ShowRequiredPage {
            location:c.payload.val().location,
            phone:c.payload.val().phone,
             time:c.payload.val().time,
+            addedby:c.payload.val().addedby,
+            hide:c.payload.val().hide,
             state:c.payload.val().state
            })
         );
       });
   
+      this.fire.authState.subscribe(auth =>{
+        if (auth) {
+          this.userid=auth.uid;
+          console.log(auth);
+        }
+          
+    
+     })
   }
-  delete(){
-    alert("delete")
-  }
+  deleteConfirm(id){
+    this.userData = this.db.list('/required')
+      this.userData.update(id,{
+        "hide":"1"
+      })
+    }
+      delete(id) {
+        let confirm = this.alertCtrl.create({
+          title: 'متأكد من الحذف..؟',
+          message: 'سيتم حذف البيانات التي ادخلتها هل انت متأكد',
+          buttons: [
+            {
+              text: 'حذف',
+              handler: () => {
+                this.deleteConfirm(id);
+              }
+            },
+            {
+              text: 'الغاء',
+              handler: () => {
+                console.log('Agree clicked');
+              }
+            }
+          ]
+        });
+        confirm.present();
+      }
+
+
+
 call(phone){
   this.callNumber.callNumber(phone , true)
   .then(() => console.log('Launched dialer!'))

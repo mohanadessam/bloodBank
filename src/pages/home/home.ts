@@ -43,13 +43,13 @@ export class HomePage {
     this.navCtrl.push(RequiredPage);
     }
     showRequried(){
-        this.navCtrl.push(StatePage);
+        this.navCtrl.push(ShowRequiredPage);
     }
     bloodBanks(){
          this.navCtrl.push(BloodBanksPage);
     }
     donors(){
-      this.navCtrl.push(DonorsStatePage);
+      this.navCtrl.push(DonorsPage);
     }
     addDonors(){
       this.navCtrl.push(DonorsRegisterPage)

@@ -16,13 +16,13 @@
 <ion-content padding>
 
     <ion-card *ngFor="let item of items | async  ">
-   <ion-grid *ngIf="item.state == state" >
+   <ion-grid *ngIf="item.hide == 0" >
         <ion-item >
             <ion-avatar item-start>
                 <img src="http://www.ativo.co.za/wp-content/uploads/2017/06/005-profile.png">
             </ion-avatar>
             <h2>{{item.name}}</h2>
-            <!-- <ion-icon ios="ios-trash" md="md-trash" style="margin-right:45px;color:red;width:150%" (click)="delete()"></ion-icon> -->
+            <ion-icon *ngIf="item.addedby == userid" name="trash" class="deletBtn" (click)="delete(item.key)"></ion-icon>
             
             <p style="display:inline">{{item.time}}</p>
         </ion-item>

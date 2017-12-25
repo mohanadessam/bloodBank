@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { RequiredPage } from '../required/required';
-=======
->>>>>>> 58b6d33bf68ecb841df061719f35ce683c16cd02
 import { HomePage } from './../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -36,6 +33,6 @@ export class StatePage {
       id:id
     });   
     }
-    
+     
   }
 

@@ -7,14 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Observable } from 'rxjs/Observable';
-// import { BloodBanksPage } from '../blood-banks/blood-banks';
 
-/**
- * Generated class for the RequiredPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -23,7 +16,14 @@ import { Observable } from 'rxjs/Observable';
 })
 export class RequiredPage {
  required :AngularFireList<any>;
- 
+ uid;
+ name=""
+  bloodtype=""
+  age=""
+  phone=""
+  location=""
+  notes=""
+   state=""
   constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
     fire.auth.onAuthStateChanged(function(user){
    if(!user){
@@ -32,6 +32,14 @@ export class RequiredPage {
    console.log(user);
     });
     this.required = db.list('/required'); 
+    this.fire.authState.subscribe(auth =>{
+      if (auth) {
+        this.uid=auth.uid;
+        console.log(auth);
+      }
+        
+  
+   })
     this.localNotifications.on("click" ,(notification ,state) =>{
       
         this.navCtrl.push(ShowRequiredPage 
@@ -56,18 +64,11 @@ export class RequiredPage {
     "notes":notes,
     "decs":0- Date.now(),
     "time":time,
-    "state":state
+    "state":state,
+    "hide":"0",
+    "addedby":this.uid,
   }).then(newPerson =>{
-    this.navCtrl.push(ShowRequiredPage , {
-      name :name,
-      bloodtype:bloodtype,
-      age:age,
-      phone:phone,
-      location:location,
-      notes:notes,
-      time:time,
-      "id":state
-    })
+    this.navCtrl.push(ShowRequiredPage)
   },error => {
     console.log(error);
   }

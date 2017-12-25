@@ -12,12 +12,7 @@ import {AboutPage} from '../about/about';
 import {ContatcUsPage} from '../contatc-us/contatc-us';
 import {DevelopersPage} from '../developers/developers';
 import { AngularFireDatabase } from 'angularfire2/database';
-/**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({

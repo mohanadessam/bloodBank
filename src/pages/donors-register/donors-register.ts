@@ -12,8 +12,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'donors-register.html',
 })
 export class DonorsRegisterPage {
+  hide="";
+  uid;
+  name="";
+  bloodtype="";
+  phone="";
+  location="";
+  note="";
+  state="";
   register :AngularFireList<any>;
   constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase ) {
+
     this.fire.auth.onAuthStateChanged(function(user){
       if(!user){
         navCtrl.setRoot(LoginPage);
@@ -21,13 +30,20 @@ export class DonorsRegisterPage {
       console.log(user);
        });
     this.register = db.list('/Donors');
+
+    this.fire.authState.subscribe(auth =>{
+      if (auth) {
+        this.uid=auth.uid;
+      }
+   })
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonorsRegisterPage');
   }
   addDonors(name , bloodtype , phone , location , note ,state){
-
+ 
    let  d = new Date();
    let time = [d.getMonth()+1,
                d.getDate(),
@@ -42,21 +58,16 @@ export class DonorsRegisterPage {
     "phone":phone,
     "location":location,
     "state":state,
+    "hide":"0",
     "decs":0- Date.now(),
-    "time":time
+    "time":time,
+    "addedby":this.uid,
   }).then(newPerson =>{
-    this.navCtrl.push(DonorsPage , {
-      name :name,
-      bloodtype:bloodtype,
-      note:note,
-      phone:phone,
-      location:location,
-      id:state,
-      time:time
-    })
+    this.navCtrl.push(DonorsPage)
   },error => {
     console.log(error);
   }
 )
   }
 }
+

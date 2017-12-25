@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase ,AngularFireList } from 'angularfire2/database';
 import { CallNumber } from '@ionic-native/call-number';
-
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the DonorsPage page.
  *
@@ -20,9 +22,11 @@ import 'rxjs/add/operator/map';
 export class DonorsPage {
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
+  userData :AngularFireList<any>;
   state;
-  constructor(public navCtrl: NavController, public navParams: NavParams , private db:AngularFireDatabase
-    ,private callNumber: CallNumber) {
+  userid="";
+  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase
+    ,private callNumber: CallNumber,public storage: Storage,public alertCtrl: AlertController) {
       this.state=this.navParams.get("id");
     this.itemsRef = db.list('/Donors', ref => ref.orderByChild('decs'))
     
@@ -35,11 +39,20 @@ export class DonorsPage {
          location:c.payload.val().location,
          phone:c.payload.val().phone,
           time:c.payload.val().time,
+          hide:c.payload.val().hide,
+          addedby:c.payload.val().addedby,
           state:c.payload.val().state,
          })
       );
     });
+    this.fire.authState.subscribe(auth =>{
+    if (auth) {
+      this.userid=auth.uid;
+      console.log(auth);
+    }
+      
 
+ })
   }
 
   ionViewDidLoad() {
@@ -49,5 +62,32 @@ export class DonorsPage {
     this.callNumber.callNumber(phone , true)
     .then(() => console.log('Launched dialer!'))
     .catch(() => console.log('Error launching dialer'));
+  }
+  deleteConfirm(id){
+  this.userData = this.db.list('/Donors')
+    this.userData.update(id,{
+      "hide":"1"
+    })
+  }
+  delete(id) {
+    let confirm = this.alertCtrl.create({
+      title: 'متأكد من الحذف..؟',
+      message: 'سيتم حذف البيانات التي ادخلتها هل انت متأكد',
+      buttons: [
+        {
+          text: 'حذف',
+          handler: () => {
+            this.deleteConfirm(id);
+          }
+        },
+        {
+          text: 'الغاء',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

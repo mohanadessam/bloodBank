@@ -1,13 +1,13 @@
 page-registration {
-  
+   
 }
-.Gradient{
-    background: #be5252;
-    background: -moz-linear-gradient(top, #be5252 0%, #964c42 50%, #7a3837 100%);
-    background: -webkit-linear-gradient(top, #be5252 0%,#964c42 50%,#7a3837 100%);
-    background: linear-gradient(to bottom, #be5252 0%,#964c42 50%,#7a3837 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#be5252', endColorstr='#7a3837',GradientType=0 );
-     direction: rtl
+Gradient{
+    background: #d04e4e;
+  background: -moz-linear-gradient(top, #d04e4e 0%, #873333 100%);
+  background: -webkit-linear-gradient(top, #d04e4e 0%,#873333 100%);
+  background: linear-gradient(to bottom, #d04e4e 0%,#873333 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d04e4e', endColorstr='#873333',GradientType=0 );
+direction: rtl
 }
 .noBackColor{
     background-color: #fff0; 
@@ -21,4 +21,13 @@ page-registration {
     color: #873435;
     background-color: #ffffff;
     font-size: 2rem;
+}
+.toast-message {
+    font-size: 1.7rem;
+    color: #b7514e !important;
+    font-family: 'Droid Arabic Kufi', serif; 
+    padding: 19px 16px 17px;
+    background-color: #f4f4f4;
+    direction: rtl
+
 }

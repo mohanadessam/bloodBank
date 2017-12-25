@@ -13,6 +13,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { PipeTransform } from '@angular/core/src/change_detection/pipe_transform';
 // import { async } from 'q';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -27,14 +28,8 @@ export class LoginPage {
   userData:AngularFireList<any>;
   state:Observable<any[]>;
   signIN=0;
-  constructor(private toastCtrl: ToastController,public db:AngularFireDatabase,public alertCtrl: AlertController,public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
-    fire.auth.onAuthStateChanged(function(user){
-      if(user){
-      
-      
-      }
-      console.log(user);
-       });
+  constructor(private toastCtrl: ToastController,public db:AngularFireDatabase,public alertCtrl: AlertController,public storage: Storage,public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
@@ -52,11 +47,10 @@ export class LoginPage {
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     }); 
-  
     this.fire.auth.signInWithEmailAndPassword(this.email,this.password).then(user =>{
       toast.present();
-      
-        this.navCtrl.setRoot(HomePage);
+    
+   this.navCtrl.setRoot(HomePage);
      
     }).catch(error=>{
       this.showAlert();
@@ -109,4 +103,5 @@ export class LoginPage {
       this.navCtrl.setRoot(HomePage);
     });
   }
+
 }
