@@ -13,36 +13,38 @@
   </ion-header>
   
   
-  <ion-content padding class="Gradient">
+  <ion-content padding class="rit">
+
       <img src="./assets/imgs/blood/login-logo2.png" width="100%" />
     <ion-list>
       <div >
        
       </div>
       <ion-item class="noBackColor">
-        <ion-label floating> <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
+        <ion-label floating class="lb"> <ion-icon name="person" style="margin:8px"></ion-icon>البريد الالكتروني</ion-label>
         <ion-input type="text"[(ngModel)]="email" ></ion-input>
       </ion-item>
     
       <ion-item class="noBackColor">
-        <ion-label floating> <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
+        <ion-label floating class="lb"> <ion-icon name="lock" style="margin:8px"></ion-icon>كلمة المرور</ion-label>
         <ion-input type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
   
     </ion-list>
     
     <div  padding>
-      <button ion-button block color="light" class="loginBnt" (click)="Login()">دخول</button>
-      <button ion-button color="light" clear (click)="skip()">تخطي</button>
+      <button ion-button block outline color="dark-red" class="loginBnt" (click)="Login()">دخول</button>
+      <button ion-button color="dark-red" clear (click)="skip()">تخطي</button>
       <button ion-button block class="callBtn" color="primary" (click)="facebookLogin()">
           <div style="margin:8px">الدخول بـ الفيسبوك</div>
              <ion-icon name="logo-facebook" ></ion-icon>
         </button>
-      <button ion-button block outline class="callBtn" color="light" (click)="googleLogin()">
+      <button ion-button block  class="callBtn" color="dark-red" (click)="googleLogin()">
           <div style="margin:8px">الدخول بـ كوكل بلاس</div>
              <ion-icon name="logo-googleplus" ></ion-icon>
         </button>
-      <button ion-button block color="light" clear (click)="register()">انشاء حساب جديد</button>
+      <button ion-button block color="dark-red" clear (click)="register()">انشاء حساب جديد</button>
+      <!-- <button ion-button (click)="logout()">logout</button> -->
     </div>
     
   </ion-content>

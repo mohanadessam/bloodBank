@@ -28,6 +28,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import {RegistrationPage} from '../pages/registration/registration';
 import {LoginPage} from '../pages/login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Facebook } from '@ionic-native/facebook';
 
 
 
@@ -102,6 +103,7 @@ const config = {
   ],
   providers: [
       LocalNotifications,
+      Facebook,
       CallNumber,
     StatusBar,
     SplashScreen,

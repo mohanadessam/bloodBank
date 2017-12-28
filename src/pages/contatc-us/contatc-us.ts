@@ -5,6 +5,7 @@ import{HomePage} from '../home/home'
 import { AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from './../login/login';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -15,10 +16,10 @@ import { LoginPage } from './../login/login';
 export class ContatcUsPage {
   newFeedback :AngularFireList<any>;
   signOut:boolean
-    constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams 
+    constructor(public storage: Storage,public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams 
     , public viewCtrl: ViewController, public db:AngularFireDatabase,
     public alertCtrl: AlertController) {
-     this.fire.auth.onAuthStateChanged(function(user){
+      fire.auth.onAuthStateChanged(function(user){
         if(!user){
           navCtrl.setRoot(LoginPage);
         }
@@ -59,7 +60,7 @@ export class ContatcUsPage {
    showAlert() {
     let alert = this.alertCtrl.create({
       title: 'شكرا لك',
-      subTitle: 'شاكرين تواصلك معنا وسنأخذ برأيك في عين الاعتبار',
+      subTitle: 'شاكرين تواصلك معنا وسنأخذ برأيك بعين الاعتبار',
       buttons: [
         {
           text: 'OK',

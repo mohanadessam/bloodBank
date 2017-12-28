@@ -6,6 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the DonorsPage page.
@@ -26,10 +28,12 @@ export class DonorsPage {
   state;
   userid="";
   constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase
-    ,private callNumber: CallNumber,public storage: Storage,public alertCtrl: AlertController) {
+    ,private callNumber: CallNumber,public storage: Storage,public alertCtrl: AlertController, public localNotifications:LocalNotifications) {
       this.state=this.navParams.get("id");
     this.itemsRef = db.list('/Donors', ref => ref.orderByChild('decs'))
-    
+    // this.itemsRef.snapshotChanges().subscribe(su=>{
+    //   this.sendPush();
+    // })
     this.items = this.itemsRef.snapshotChanges().map(changes => {
       return changes.map(c => ({ 
         key: c.payload.key,
@@ -42,8 +46,10 @@ export class DonorsPage {
           hide:c.payload.val().hide,
           addedby:c.payload.val().addedby,
           state:c.payload.val().state,
+          
          })
       );
+      
     });
     this.fire.authState.subscribe(auth =>{
     if (auth) {
@@ -90,4 +96,14 @@ export class DonorsPage {
     });
     confirm.present();
   }
+  // sendPush(){
+
+  //   this.localNotifications.schedule({
+  //     id: 1,
+  //       title:'مطلوب فصيلة ' ,
+  //     text: 'يوجد شخص يحتاج الى التبرع بالدم يرجى التوجه الى مستشفى  ' ,
+      
+  //   });
+    
+  // }
 }

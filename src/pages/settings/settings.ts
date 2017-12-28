@@ -13,6 +13,7 @@ import {ContatcUsPage} from '../contatc-us/contatc-us';
 import {DevelopersPage} from '../developers/developers';
 import { AngularFireDatabase } from 'angularfire2/database';
 
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @IonicPage()
 @Component({
@@ -25,10 +26,21 @@ export class SettingsPage {
   val: boolean ;
   x:number = 1;
   signOut=false;
-  constructor(public af:AngularFireDatabase,private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
+  logginIN= false;
+  logginFb=false;
+
+  constructor(private fb: Facebook ,public af:AngularFireDatabase,private toastCtrl: ToastController,public fire:AngularFireAuth,private ev: Events,public navCtrl: NavController, 
     public navParams: NavParams , private storage: Storage,public modalCtrl: ModalController) {
    
-
+      fb.getLoginStatus().then(res=>{
+        if(res.status==="connect"){
+          this.logginIN = true;
+        }else{
+          this.logginIN= false;
+        }
+      }).catch(e =>{
+        console.log('error : '+e);
+      });
 
     this.storage.get('toggle01').then((val) => {
      this.toggle01=val;
@@ -37,6 +49,9 @@ export class SettingsPage {
      }else{this.x=1;}
      console.log('Your x sittng cc is', this.x);
     });
+    
+
+    
   }
 
 login(){
@@ -92,12 +107,19 @@ ionViewDidLoad() {
       console.log('Dismissed toast');
     });
   
-    
-  
     this.fire.auth.signOut().then(function() {
       toast.present();
     }, function(error) {
       console.log(error);
+    });
+  }
+  logoutfb(){
+    this.fb.logout().then(res=>{
+    this.logginIN=false;
+    this.storage.set('logginIN', this.logginIN);
+    this.logginFb= false;
+    }).catch(e=>{
+      console.log(e);
     });
   }
 }

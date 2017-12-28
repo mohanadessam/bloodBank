@@ -17,7 +17,7 @@
     <ion-list no-border >
         
             <ion-list-header>
-              شكل الصفحة الرئيسية والالوان
+              شكل الصفحة الرئيسية 
             </ion-list-header>
       
             <ion-item>
@@ -45,7 +45,7 @@
               الاشعارات
             </ion-list-header>
             <ion-item>
-              <ion-toggle color="dark-red" checked="true" (ionChange)="presentModal()"></ion-toggle>
+              <ion-toggle color="dark-red" checked="true"></ion-toggle>
               <ion-label>
                  تلقي الاشعارات
               </ion-label>
@@ -70,7 +70,7 @@
     مطورين التطبيق
     <ion-icon name='code-working' item-start></ion-icon>
   </button>
-  <button ion-item *ngIf="fire.authState | async; let user; else showLogin" (click)="logout()">
+      <button ion-item *ngIf="fire.authState | async; let user; else showLogin" (click)="logout()">
    تسجيل خروج 
     <ion-icon ios="ios-log-out" md="md-log-out" item-start></ion-icon>
   </button>  

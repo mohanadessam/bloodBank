@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase , AngularFireList} from 'angularfire2/database';
 import { DonorsPage } from '../donors/donors'
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -12,6 +14,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'donors-register.html',
 })
 export class DonorsRegisterPage {
+  logginIN= false;
   hide="";
   uid;
   name="";
@@ -20,15 +23,27 @@ export class DonorsRegisterPage {
   location="";
   note="";
   state="";
+  test;
   register :AngularFireList<any>;
-  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase ) {
-
+  constructor(public storage: Storage,private fb: Facebook ,public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase ) {
+    fb.getLoginStatus().then(res=>{
+      if(res.status==="connect"){
+        this.logginIN = true;
+      }else{
+        this.logginIN= false;
+      }
+    }).catch(e =>{
+      console.log('error : '+e);
+    });
+       
     this.fire.auth.onAuthStateChanged(function(user){
       if(!user){
         navCtrl.setRoot(LoginPage);
       }
       console.log(user);
        });
+   
+    
     this.register = db.list('/Donors');
 
     this.fire.authState.subscribe(auth =>{

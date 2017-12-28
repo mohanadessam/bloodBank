@@ -7,6 +7,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Observable } from 'rxjs/Observable';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -24,13 +26,24 @@ export class RequiredPage {
   location=""
   notes=""
    state=""
-  constructor(public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
-    fire.auth.onAuthStateChanged(function(user){
-   if(!user){
-     navCtrl.setRoot(LoginPage);
-   }
-   console.log(user);
+   logginIN= false;
+  constructor(public storage: Storage,private fb: Facebook ,public fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams , public db:AngularFireDatabase , public localNotifications:LocalNotifications) {
+    fb.getLoginStatus().then(res=>{
+      if(res.status==="connect"){
+        this.logginIN = true;
+      }else{
+        this.logginIN= false;
+      }
+    }).catch(e =>{
+      console.log('error : '+e);
     });
+   
+    fire.auth.onAuthStateChanged(function(user){
+      if(!user){
+        navCtrl.setRoot(LoginPage);
+      }
+      console.log(user);
+       });
     this.required = db.list('/required'); 
     this.fire.authState.subscribe(auth =>{
       if (auth) {
